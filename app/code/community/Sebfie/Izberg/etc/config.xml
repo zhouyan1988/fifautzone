@@ -1,0 +1,404 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Sebfie_Izberg>
+            <version>1.8.0</version><platform>ce</platform>
+        </Sebfie_Izberg>
+    </modules>
+    <global>
+        <blocks>
+            <izberg>
+                <class>Sebfie_Izberg_Block</class>
+            </izberg>
+        </blocks>
+        <models>
+            <izberg>
+                <class>Sebfie_Izberg_Model</class>
+                <resourceModel>izberg_mysql4</resourceModel>
+            </izberg>
+            <izberg_mysql4>
+                <class>Sebfie_Izberg_Model_Mysql4</class>
+                <entities>
+                    <merchant>
+                        <table>izberg_merchant</table>
+                    </merchant>
+                    <product>
+                        <table>izberg_product</table>
+                    </product>
+                    <product_image>
+                        <table>izberg_product_image</table>
+                    </product_image>
+                    <category>
+                        <table>izberg_category</table>
+                    </category>
+                    <attribute>
+                        <table>izberg_attribute</table>
+                    </attribute>
+                    <catalog_product>
+                        <table>izberg_catalog_product</table>
+                    </catalog_product>
+                    <job>
+                        <table>izberg_job</table>
+                    </job>
+                    <import>
+                        <table>izberg_import</table>
+                    </import>
+                    <log>
+                        <table>izberg_log</table>
+                    </log>
+                    <magmi_log>
+                        <table>izberg_magmi_log</table>
+                    </magmi_log>
+                    <accesstoken>
+                        <table>izberg_access_token</table>
+                    </accesstoken>
+                    <split>
+                        <table>izberg_split</table>
+                    </split>
+                </entities>
+            </izberg_mysql4>
+            <sales>
+                <rewrite>
+                    <quote_address_rate>Sebfie_Izberg_Model_Quote_Address_Rate</quote_address_rate>
+                    <quote_address>Sebfie_Izberg_Model_Quote_Address</quote_address>
+                    <quote>Sebfie_Izberg_Model_Quote</quote>
+                </rewrite>
+            </sales>
+        </models>
+        <sales>
+            <order>
+                <statuses>
+                    <izberg_order translate="label">
+                        <label>Izberg order</label>
+                    </izberg_order>
+                </statuses>
+                <states>
+                   <izberg_order translate="label">
+                        <label>Izberg order</label>
+                        <statuses>
+                            <izberg_order default="1"/>
+                        </statuses>
+                        <visible_on_front>1</visible_on_front>
+                   </izberg_order>
+                </states>
+            </order>
+        </sales>
+        <events>
+            <controller_front_init_before>
+              <observers>
+                <izberg_autoloader>
+                  <class>izberg/autoloader</class>
+                  <method>addAutoloader</method>
+                </izberg_autoloader>
+              </observers>
+            </controller_front_init_before>
+
+            <default>
+              <observers>
+                <izberg_autoloader_cron>
+                  <class>izberg/autoloader</class>
+                  <method>addAutoloader</method>
+                </izberg_autoloader_cron>
+              </observers>
+            </default>
+
+            <resource_get_tablename>
+              <observers>
+                <izberg_autoloader_cron>
+                  <class>izberg/autoloader</class>
+                  <method>addAutoloader</method>
+                </izberg_autoloader_cron>
+              </observers>
+            </resource_get_tablename>
+
+            <sales_quote_product_add_after>
+                <observers>
+                   <izberg>
+                      <type>singleton</type>
+                      <class>izberg/observer</class>
+                      <method>addItemToIzbergCart</method>
+                   </izberg>
+               </observers>
+            </sales_quote_product_add_after>
+
+            <!-- We have to use this event because on first product add, quote_id is null in sales_quote_product_add_after -->
+            <sales_quote_save_after>
+                <observers>
+                   <izberg>
+                      <type>singleton</type>
+                      <class>izberg/observer</class>
+                      <method>updateTokenIfNeeded</method>
+                   </izberg>
+               </observers>
+            </sales_quote_save_after>
+
+            <sales_quote_remove_item>
+                <observers>
+                   <izberg>
+                      <type>singleton</type>
+                      <class>izberg/observer</class>
+                      <method>deleteItemToIzbergCart</method>
+                   </izberg>
+               </observers>
+            </sales_quote_remove_item>
+
+            <sales_quote_remove_all_items>
+                <observers>
+                   <izberg>
+                      <type>singleton</type>
+                      <class>izberg/observer</class>
+                      <method>deleteAllItemToIzbergCart</method>
+                   </izberg>
+               </observers>
+            </sales_quote_remove_all_items>
+
+            <!-- We do not need that, in checkout_submit_all_after, we created order from cart in izberg, so the cart is not returned on /mine anymore -->
+            <!--
+            <checkout_submit_all_after>
+                <observers>
+                   <izberg>
+                      <type>singleton</type>
+                      <class>izberg/observer</class>
+                      <method>newCart</method>
+                   </izberg>
+               </observers>
+            </checkout_submit_all_after> -->
+
+            <checkout_cart_update_items_after>
+                <observers>
+                   <izberg>
+                      <type>singleton</type>
+                      <class>izberg/observer</class>
+                      <method>updateItemToIzbergCart</method>
+                   </izberg>
+               </observers>
+            </checkout_cart_update_items_after>
+
+
+            <sales_quote_merge_after>
+                <observers>
+                   <izberg>
+                      <type>singleton</type>
+                      <class>izberg/observer</class>
+                      <method>afterQuoteMerge</method>
+                   </izberg>
+               </observers>
+            </sales_quote_merge_after>
+
+            <catalog_product_delete_after>
+                <observers>
+                   <izberg>
+                      <type>singleton</type>
+                      <class>izberg/observer</class>
+                      <method>removeImages</method>
+                   </izberg>
+               </observers>
+            </catalog_product_delete_after>
+
+            <sales_order_invoice_pay>
+                <observers>
+                    <izberg>
+                        <class>izberg/observer</class>
+                        <method>flag_split_order_if_has_izberg_products</method>
+                    </izberg>
+                </observers>
+            </sales_order_invoice_pay>
+
+        </events>
+        <resources>
+            <izberg_setup>
+                <setup>
+                    <module>Sebfie_Izberg</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </izberg_setup>
+            <izberg_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </izberg_write>
+            <izberg_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </izberg_read>
+        </resources>
+        <helpers>
+            <izberg>
+                <class>Sebfie_Izberg_Helper</class>
+            </izberg>
+        </helpers>
+        <template>
+            <email>
+                <izberg_merchant_products_import_success module="izberg">
+                    <label>Izberg merchant products successfully imported</label>
+                    <file>izberg/izberg_merchant_products_import_success.html</file>
+                    <type>html</type>
+                </izberg_merchant_products_import_success>
+                <izberg_merchant_products_import_error module="izberg">
+                    <label>Error while importing izberg products</label>
+                    <file>izberg/izberg_merchant_products_import_error.html</file>
+                    <type>html</type>
+                </izberg_merchant_products_import_error>
+                <izberg_merchant_order_cancelled>
+                    <label>When an order is cancelled by izberg merchant</label>
+                    <file>izberg/izberg_merchant_order_cancelled.html</file>
+                    <type>html</type>
+                </izberg_merchant_order_cancelled>
+            </email>
+        </template>
+    </global>
+    <crontab>
+        <jobs>
+            <import_izberg_merchant_products>
+                <schedule><cron_expr>*/5 * * * *</cron_expr></schedule>
+                <run><model>izberg/observer::import_izberg_merchant_products</model></run>
+            </import_izberg_merchant_products>
+            <run_izberg_webhooks>
+                <schedule><cron_expr>*/5 * * * *</cron_expr></schedule>
+                <run><model>izberg/observer::run_izberg_webhooks</model></run>
+            </run_izberg_webhooks>
+            <split_izberg_orders>
+                <schedule><cron_expr>*/5 * * * *</cron_expr></schedule>
+                <run><model>izberg/observer::split_izberg_orders</model></run>
+            </split_izberg_orders>
+            <izberg_reenque_wip_jobs>
+                <schedule><cron_expr>*/30 * * * *</cron_expr></schedule>
+                <run><model>izberg/observer::reenque_wip_jobs</model></run>
+            </izberg_reenque_wip_jobs>
+            <izberg_magmi_cancel_if_needed>
+                <schedule><cron_expr>*/30 * * * *</cron_expr></schedule>
+                <run><model>izberg/observer::cancel_magmi</model></run>
+            </izberg_magmi_cancel_if_needed>
+            <izberg_clear_logs>
+                <schedule><cron_expr>0 23 * * *</cron_expr></schedule>
+                <run><model>izberg/observer::clear_logs</model></run>
+            </izberg_clear_logs>
+            <izberg_clear_magmi_csv>
+                <schedule><cron_expr>0 23 * * 0</cron_expr></schedule>
+                <run><model>izberg/observer::clear_magmi_csv</model></run>
+            </izberg_clear_magmi_csv>
+            <izberg_clear_jobs>
+                <schedule><cron_expr>0 22 * * *</cron_expr></schedule>
+                <run><model>izberg/observer::clear_jobs</model></run>
+            </izberg_clear_jobs>
+            <izberg_magmi_import>
+                <schedule><cron_expr>0 * * * *</cron_expr></schedule>
+                <run><model>izberg/magmi::import</model></run>
+            </izberg_magmi_import>
+        </jobs>
+    </crontab>
+    <admin>
+        <routers>
+            <izberg>
+                <use>admin</use>
+                <args>
+                    <module>Sebfie_Izberg</module>
+                    <frontName>izberg</frontName>
+                </args>
+            </izberg>
+        </routers>
+    </admin>
+    <frontend>
+        <routers>
+            <izberg>
+                <use>standard</use>
+                <args>
+                    <module>Sebfie_Izberg</module>
+                    <frontName>izberg</frontName>
+                </args>
+            </izberg>
+        </routers>
+    </frontend>
+    <adminhtml>
+       <layout>
+          <updates>
+            <izberg>
+              <file>izberg.xml</file>
+            </izberg>
+          </updates>
+        </layout>
+        <events>
+          <core_block_abstract_prepare_layout_before>
+            <observers>
+              <izberg_core_block_abstract_prepare_layout_before>
+                <class>izberg/observer</class>
+                <method>addProductMassAction</method>
+              </izberg_core_block_abstract_prepare_layout_before>
+            </observers>
+          </core_block_abstract_prepare_layout_before>
+        </events>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <izberg>
+                                            <title>Izberg - All</title>
+                                        </izberg>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <Sebfie_Izberg>
+                    <files>
+                        <default>Sebfie_Izberg.csv</default>
+                    </files>
+                </Sebfie_Izberg>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <izberg>
+            <izberg_product_settings>
+              <izberg_description_html>1</izberg_description_html>
+              <izberg_price_with_tax>1</izberg_price_with_tax>
+              <izberg_first_image_as_thumbnail>1</izberg_first_image_as_thumbnail>
+              <izberg_first_image_as_small_image>1</izberg_first_image_as_small_image>
+              <izberg_action_if_no_stock></izberg_action_if_no_stock>
+              <izberg_first_image_as_baseimage>1</izberg_first_image_as_baseimage>  <izberg_link_simple_products_from_configurable_to_categories>0</izberg_link_simple_products_from_configurable_to_categories>
+              <izberg_default_product_attribute>{}</izberg_default_product_attribute>
+              <izberg_product_visibility_configurable_simple>4</izberg_product_visibility_configurable_simple>
+              <izberg_product_visibility_simple>4</izberg_product_visibility_simple>
+              <izberg_product_visibility_configurable>4</izberg_product_visibility_configurable>
+              <izberg_default_product_name_format>{{brand}} - {{name}}{{ - variation|color}}{{ - variation|size}}</izberg_default_product_name_format>
+              <izberg_add_to_magento_parent_categories_if_match>1</izberg_add_to_magento_parent_categories_if_match>
+            </izberg_product_settings>
+            <izberg_settings>
+                <izberg_debug>0</izberg_debug>
+                <izberg_sandbox>0</izberg_sandbox>
+                <izberg_development>0</izberg_development>
+            </izberg_settings>
+            <izberg_jobs_settings>
+                <izberg_products_by_job>30</izberg_products_by_job>
+                <izberg_concurrency_product_jobs>5</izberg_concurrency_product_jobs>
+                <izberg_concurrency_webhook_jobs>5</izberg_concurrency_webhook_jobs>
+            </izberg_jobs_settings>
+            <izberg_magmi_settings>
+              <izberg_magmi_login>magmi</izberg_magmi_login>
+              <izberg_magmi_password>magmi</izberg_magmi_password>
+            </izberg_magmi_settings>
+        </izberg>
+    </default>
+    <phpunit>
+     <suite>
+       <modules>
+         <Sebfie_Izberg />
+       </modules>
+     </suite>
+  </phpunit>
+</config>

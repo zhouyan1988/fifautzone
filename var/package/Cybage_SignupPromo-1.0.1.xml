@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+    <name>Cybage_SignupPromo</name>
+    <version>1.0.1</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">Open Software License</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>The Sign-up Promotion plug-in provides the discount functionality for new sign-up customers. It generates random coupon codes for the customers.</summary>
+    <description>The Sign-up Promotion plug-in provides the discount functionality for new sign-up customers. It generates random coupon codes for the customers.&#xD;
+Features&#xD;
+&#x2022;	Helps in promoting the Magento site whenever a new customer logs in.&#xD;
+&#x2022;	Easy reporting of the discount amount for an order.</description>
+    <notes>After installation of the Marketplace plugin please clear the cache.</notes>
+    <authors><author><name>Cybage Software Pvt. Ltd.</name><user>cybage</user><email>Support_Magento@cybage.com</email></author></authors>
+    <date>2014-09-23</date>
+    <time>19:35:04</time>
+    <contents><target name="magecommunity"><dir name="Cybage"><dir name="SignupPromo"><dir name="Block"><file name="Coupon.php" hash="153aaf617f815bf61b5fa9c619976599"/><dir name="Promo"><dir name="Quote"><dir name="Edit"><dir name="Tab"><dir name="Coupons"><dir name="Column"><dir name="Renderer"><file name="Email.php" hash="3d6aeab71dd44df87227b36753880783"/></dir></dir><file name="Grid.php" hash="73aaa568756a8950617afdbd6429bc87"/></dir></dir></dir></dir></dir><file name="SignupPromo.php" hash="6c00a11376d63f409f360bf158d68576"/></dir><dir name="Helper"><file name="Data.php" hash="f2c963de8e5c34f15dd0a76e353b348d"/></dir><dir name="Model"><file name="Observer.php" hash="6096765787ba647a921c3aee824fb8bc"/><dir name="Resource"><dir name="Rule"><file name="Collection.php" hash="6bc7de49aaae34f393baec03495bbd20"/></dir></dir><file name="Rule.php" hash="015b5483fe6174e742f28bdd439eaadf"/><file name="Signuppromo.php" hash="158a384c76c075305c860d5a9277bdac"/></dir><dir name="controllers"><file name="CustomerController.php" hash="877c2457f595113006a27f3a0d3e0560"/></dir><dir name="etc"><file name="adminhtml.xml" hash="3487ba7b07cddffef8605f020808a538"/><file name="config.xml" hash="3a4d50d341b9b6c60365ef3dbe87e924"/><file name="system.xml" hash="bbf68878413291b820b8ce61a1ddc753"/></dir><dir name="sql"><dir name="signuppromo_setup"><file name="mysql4-install-1.6.0.0.php" hash="3e5b8bae9c68a1080713e05f800f4995"/></dir></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="signuppromo.xml" hash="14703ff5856ce49236161654d3a447de"/></dir><dir name="template"><dir name="signuppromo"><file name="coupon.phtml" hash="cbe2bd13a62a9bdb0e49ceffb79ffe28"/><file name="dashboardcouponinfo.phtml" hash="f821607b9a45853ff3ef69ee824b3607"/><dir name="email"><file name="template.phtml" hash="30b1f55093d557ab5a8837e5802de372"/></dir></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Cybage_SignupPromo.xml" hash="061645c8b59e4bc9c1dc9727ea0481ad"/></dir></target><target name="magelocale"><dir name="en_US"><dir name="template"><dir name="email"><file name="signuppromo.html" hash="442a772b9595fc107e2502a13864878c"/></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

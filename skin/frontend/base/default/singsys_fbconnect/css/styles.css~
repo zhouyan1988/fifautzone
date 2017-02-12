@@ -1,0 +1,33 @@
+div.singsys-fbconnect-register,
+div.singsys-fbconnect-checkout,
+div.singsys-fbconnect {
+    margin-top: 28px;
+}
+
+div.singsys-fbconnect-login .content {
+    min-height: 100px;
+}
+
+div.singsys-fbconnect-register .fieldset {
+    margin: 0px;
+}
+
+div.singsys-fbconnect-account .col3-set .col-1 {
+    width: 29%
+}
+
+div.singsys-fbconnect-account .col3-set .col-2 {
+    width: 49%
+}
+
+div.singsys-fbconnect-account .col3-set .col-3 {
+    width: 19%
+}
+
+div.singsys-fbconnect-account .col2-set .col-1 {
+    width: 79%
+}
+
+div.singsys-fbconnect-account .col2-set .col-2 {
+    width: 19%
+}

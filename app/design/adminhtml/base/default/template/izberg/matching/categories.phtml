@@ -1,0 +1,445 @@
+<?php
+   /**
+    * Magento
+    *
+    * NOTICE OF LICENSE
+    *
+    * This source file is subject to the Academic Free License (AFL 3.0)
+    * that is bundled with this package in the file LICENSE_AFL.txt.
+    * It is also available through the world-wide-web at this URL:
+    * http://opensource.org/licenses/afl-3.0.php
+    * If you did not receive a copy of the license and are unable to
+    * obtain it through the world-wide-web, please send an email
+    * to license@magentocommerce.com so we can send you a copy immediately.
+    *
+    * DISCLAIMER
+    *
+    * Do not edit or add to this file if you wish to upgrade Magento to newer
+    * versions in the future. If you wish to customize Magento for your
+    * needs please refer to http://www.magentocommerce.com for more information.
+    *
+    * @category    design
+    * @package     default_default
+    * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+    * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+    */
+   ?>
+<?php
+ /**
+  * Template for block Mage_Adminhtml_Block_Customer_Edit_Tab_View
+  */
+ $coreHelper = Mage::helper('core');
+ $merchant = $this->getMerchant();
+
+ $izbergRootCategories = $this->getRootCategories();
+ $izbergCategories = $this->getIzbergCategories()->toArray();
+ $allAlreadyMatchedIzbergCategories = $this->loadAllIzbergCategories();
+
+ $applicationRootCategories = $this->getRootApplicationCategories();
+ $applicationCategories = $this->getApplicationCategories()->toArray();
+ $allAlreadyMatchedApplicationCategories = $this->loadAllApplicationCategories();
+
+ ?>
+<div class="main-col-inner">
+  <div class="content-header">
+     <h3 class="icon-head head-products"><?php echo Mage::helper('izberg')->__('Categories matching') ?></h3>
+     <div class="content-buttons-placeholder">
+        <p class="content-buttons form-buttons">
+          <button title="Save matching" type="button" class="scalable save" style="">
+            <span>
+              <span>
+                <span><?php echo $this->__("Save matching") ?></span>
+              </span>
+            </span>
+          </button>
+        </p>
+     </div>
+  </div>
+   <div class="entry-edit">
+      <div class="entry-edit-head">
+         <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('izberg')->__('Your izberg application categories') ?></h4>
+      </div>
+      <div id="matching_application_categories" class="fieldset fieldset-wide">
+          <h2><?php echo $this->__("Select your izberg application category and link it to a magento category :") ?></h2>
+          <div>
+            <form class="matcherSelects">
+              <input type="hidden" name="type" value="application_category" />
+              <table style="width:100%">
+                <!-- Categories selectors come here -->
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th><?php echo $this->__("Select the izberg category") ?></th>
+                    <th><?php echo $this->__("Select the associated magento category") ?></th>
+                    <th><?php echo $this->__("Select the gender of products to associate (Only checked gender products will be associated)") ?></th>
+                  </tr>
+                </thead>
+              </table>
+            </form>
+          </div>
+      </div>
+   </div>
+   <div class="entry-edit">
+      <div class="entry-edit-head">
+         <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('izberg')->__('Izberg categories') ?></h4>
+      </div>
+      <div id="matching_izberg_categories" class="fieldset fieldset-wide">
+          <h2><?php echo $this->__("Select an izberg category and link it to a magento category :") ?></h2>
+          <div>
+            <form class="matcherSelects">
+              <input type="hidden" name="type" value="category" />
+              <table style="width:100%">
+                <!-- Categories selectors come here -->
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th><?php echo $this->__("Select the izberg category") ?></th>
+                    <th><?php echo $this->__("Select the associated magento category") ?></th>
+                    <th><?php echo $this->__("Select the gender of products to associate (Only checked gender products will be associated)") ?></th>
+                  </tr>
+                </thead>
+              </table>
+            </form>
+          </div>
+      </div>
+   </div>
+</div>
+
+<script>
+if(!Izberg) { var Izberg = {}; }
+var pendingRequest = 0;
+
+Izberg.MatchingCategories = Class.create({
+    initialize: function(element, izbergRootCategories, izbergCategories, magentoCategories, izbergCategoriesInCache, izbergGenders) {
+      this.wrapperEl = element;
+      this.izbergCategories = izbergCategories;
+      this.izbergRootCategories = izbergRootCategories;
+      this.izbergGenders = izbergGenders;
+      this.magentoCategories = magentoCategories;
+      this.categoryChooserCount = 0;
+
+      this.categoriesByParentId = izbergCategoriesInCache;
+
+      this.categoriesById = [];
+      this.addCategoryToCache(izbergRootCategories);
+      this.addCategoryToCache(Object.values(izbergCategoriesInCache).flatten());
+
+      this.type = $(this.wrapperEl).select('input[type="hidden"]')[0].value
+      this.organizeCategoriesByIzbergId();
+
+      this.insertAddMatchButton();
+
+      // We init the view on "edition" to display categories already matching
+      // It will insert the first select if we did not make any matches previously
+      this.initView();
+
+      $$("button.save")[0].observe("click", this.save.bind(this));
+    },
+
+    initView: function() {
+      var alreadyMatches = false;
+      this.izbergCategories.each(function(izberg_category){
+        if (izberg_category.magento_matching_category_id) {
+          alreadyMatches = true;
+          var line = this.insertRootCategoryMatcher();
+
+          // We select the right izberg category
+          var izberg_category_wrapper_el = line.select("[class^=chooseIzbergCategory]")
+          var treeCats  = this.getTreeCategoryIds(izberg_category);
+
+          treeCats.each(function(cat_id, index){
+            // We get the last select and set the value
+            var select = izberg_category_wrapper_el[0].select("select").last();
+            select.setValue(parseInt(cat_id));
+            // If we selected a root category, we do not want to display childs
+            this.onCategoryElementChange(select.fire("change"));
+          }.bind(this));
+          // We select the right magento category
+          line.select("[class^=chooseMagentoCategory] select")[0].setValue(izberg_category.magento_matching_category_id);
+
+          // We unselect all
+          line.select("input[class^=genderSelect]").each(function(el){
+            el.checked = false;
+          })
+          if (izberg_category.gender) {
+            izberg_category.gender.each(function(gender){
+              line.select("input[class^=genderSelect][value=" + gender + "]")[0].checked = true;
+            });
+          }
+        }
+      }.bind(this));
+
+      if (!alreadyMatches) {
+        // We insert the first select
+        this.insertRootCategoryMatcher();
+      }
+    },
+
+    getTreeCategoryIds: function(cat) {
+      return cat.izberg_category_path.split("/");
+      // return cat.izberg_category_path.substring(1, cat.izberg_category_path.length-1).split("/");
+    },
+
+    addCategoryToCache: function(cats) {
+      cats.each(function(item){
+        this.categoriesById[item.id] = item;
+      }.bind(this));
+    },
+
+    getIzbergCategory: function(id) {
+      return this.izbergCategoriesById[id];
+    },
+
+    organizeCategoriesByIzbergId: function() {
+      result = {} ;
+      this.izbergCategories.each(function(izberg_category){
+        result[izberg_category.category_id] = izberg_category;
+      });
+      this.izbergCategoriesById = result;
+    },
+
+    insertAddMatchButton: function(){
+      var buttonWrapper =  new Element("div", { "style" : "margin-top:10px"});
+      buttonWrapper.insert("<button>Match an other category</button>");
+      $(this.wrapperEl).insert(buttonWrapper);
+
+      buttonWrapper.select("button")[0].observe('click', function(event){
+        this.insertRootCategoryMatcher();
+      }.bind(this));
+    },
+
+    getFormValues: function() {
+      return $$('.matcherSelects')[0].serialize(true);
+    },
+
+    insertRootCategoryMatcher : function(){
+      // Called once by line
+      this.categoryChooserCount++;
+      var izbergCssClassName = "chooseIzbergCategory_" + this.categoryChooserCount;
+      var magentoCssClassName = "chooseMagentoCategory_" + this.categoryChooserCount;
+      var izbergCssClassGenders = "chooseIzbergGenders_" + this.categoryChooserCount;
+
+      var line =  new Element("tr");
+
+      var removeMatcherWrapper =  new Element("td");
+      removeMatcherWrapper.insert(this.createRemoveMatcherElement(line));
+
+      var izbergCategoryMatcherWrapper =  new Element("td", { "class": izbergCssClassName, "style": "padding:3px 0; width: 33%;border-bottom: 1px solid #d6d6d6" });
+      izbergCategoryMatcherWrapper.insert(this.createIzbergCategorySelectElement(this.getRootCategories(), 0));
+      // We insert an input hidden element with breadcrumb
+      izbergCategoryMatcherWrapper.insert(this.createIzbergBreadcrumb(0));
+
+      var magentoCategoryMatcherWrapper =  new Element("td", { "class": magentoCssClassName, "style": "padding:3px 0; width:33%;border-bottom: 1px solid #d6d6d6" });
+      magentoCategoryMatcherWrapper.insert(this.createMagentoCategorySelectElement(this.magentoCategories, 0));
+
+      var izbergCategoryGenderMatcherWrapper =  new Element("td", { "class": izbergCssClassGenders, "style": "padding:3px 0; width: 33%;border-bottom: 1px solid #d6d6d6" });
+      izbergCategoryGenderMatcherWrapper.insert(this.createIzbergGendersSelectElement(this.izbergGenders));
+
+      line.insert(removeMatcherWrapper);
+      line.insert(izbergCategoryMatcherWrapper);
+      line.insert(magentoCategoryMatcherWrapper);
+      line.insert(izbergCategoryGenderMatcherWrapper);
+
+      $(this.wrapperEl).select(".matcherSelects table")[0].insert({
+        "bottom": line
+      });
+
+      return line;
+    },
+
+    createRemoveMatcherElement: function(line) {
+      var element =  new Element("span", { "style": "cursor:pointer; padding-right: 10px; font-weight:bold;"}).update("X");
+      element.observe("click", function(event){
+        line.remove();
+      });
+      return element;
+    },
+
+    createIzbergCategorySelectElement: function(categories, level) {
+      var categoryRootElementSelect =  new Element("select", { "class": "categorySelectLvl_" + level, "name": "matching[" + this.categoryChooserCount + "][izberg][]" });
+      categoryRootElementSelect.insert(new Element("option", {"value": ""}).update("-----------"));
+
+      categories.each(function(category){
+        var el = new Element("option", {"value": category.id}).update(category.name)
+        categoryRootElementSelect.insert(el);
+      });
+
+      // We observe the change
+      categoryRootElementSelect.observe("change", this.onCategoryElementChange.bind(this));
+
+      return categoryRootElementSelect;
+    },
+
+    createIzbergBreadcrumb: function(level) {
+      var input_hidden =  new Element("input", { "type": "hidden", "name": "matching[" + this.categoryChooserCount + "][breadcrumb]" });
+      return input_hidden;
+    },
+
+    createMagentoCategorySelectElement: function(categories, level) {
+      var categoryRootElementSelect =  new Element("select", { "class": "categorySelectLvl_" + level, "name": "matching[" + this.categoryChooserCount + "][magento][]" });
+      $H(categories).each(function(item){
+        var el = new Element("option", {"value": item.value.id}).update(item.value.name)
+        categoryRootElementSelect.insert(el);
+      });
+
+      // We observe the change
+      // categoryRootElementSelect.observe("change", this.onCategoryElementChange.bind(this));
+
+      return categoryRootElementSelect;
+    },
+
+    createIzbergGendersSelectElement: function(genders) {
+      var wrapper = new Element("div", { "style" : "display:block; overflow:hidden;"});
+      var that = this;
+
+      $H(genders).each(function(item){
+        var value = item[0];
+        var label = item[1];
+        var lab = new Element("label", { "style": "float:left; margin-right: 10px;"});
+        var input = new Element("input", { "class": "genderSelectLvl_" + value, "name": "matching[" + that.categoryChooserCount + "][gender][]", "type" : "checkbox", "checked" : "", "value" : value });
+        lab.insert(input);
+        lab.insert(label);
+        wrapper.insert(lab);
+      });
+      return wrapper;
+    },
+
+    // This function will remove child elements when we changed the selection of a parent
+    // e.g, we selected cloth/shoes and we select bags, I have to remove the shoes selector
+    removeUndesirableChilds: function(element, lvl) {
+      $(element).up("[class^=chooseIzbergCategory]").select("select").each(function(item){
+        var level = item.readAttribute("class").split("_")[1];
+        if (parseInt(level) > parseInt(lvl)) {
+          item.remove();
+        }
+      });
+    },
+
+    getBreadcrumbName: function(event) {
+      var last_value = null;
+      $(event.target).up("td").select("select").each(function(item){
+        if (item.value != ""){
+          last_value = item.value
+        }
+      }.bind(this));
+      if (!last_value) return "";
+
+      var cat = this.categoriesById[last_value];
+      var result = []
+      cat.parent_ids_tree.each(function(item){
+        result.push(this.categoriesById[item].name)
+      }.bind(this));
+      console.log(result.join(" > "));
+      return result.join(" > ");
+    },
+
+    onCategoryElementChange: function(event) {
+      var selected_category_id = $(event.target).value;
+      // First of all, we remove all next lvl elements
+      var level = $(event.target).readAttribute("class").split("_")[1];
+
+      this.removeUndesirableChilds($(event.target), level);
+
+      if (this.categoriesByParentId[selected_category_id]) {
+        categories = this.categoriesByParentId[selected_category_id];
+        if (categories.length > 0) {
+          var elemToInsert = this.createIzbergCategorySelectElement(categories, (parseInt($(event.target).readAttribute("class").split("_")[1]) + 1) );
+          $(event.target).insert({"after": elemToInsert});
+        }
+        // We update the value of the breadcrumb
+        var beadcrumb = this.getBreadcrumbName(event);
+        $(event.target).up("td").down("input[type='hidden']").setValue(beadcrumb);
+
+      } else {
+        if (selected_category_id == "")  {
+          // We update the value of the breadcrumb
+          var beadcrumb = this.getBreadcrumbName(event);
+          $(event.target).up("td").down("input[type='hidden']").setValue(beadcrumb);
+          return;
+        }
+        new Ajax.Request('<?php echo $this->getCategoryAjaxRequestUrl() ?>', {
+          method:'post',
+          parameters: {
+            parent_id: selected_category_id,
+            type: this.type
+          },
+          requestHeaders: {Accept: 'application/json'},
+          onSuccess: function(response) {
+            // Handle the response content...
+            categories = response.responseText.evalJSON();
+            this.categoriesByParentId[selected_category_id] = categories;
+            this.addCategoryToCache(categories);
+            if (categories.length > 0) {
+              var elemToInsert = this.createIzbergCategorySelectElement(categories, (parseInt($(event.target).readAttribute("class").split("_")[1]) + 1) );
+              $(event.target).insert({"after": elemToInsert});
+            }
+            // We update the value of the breadcrumb
+            var beadcrumb = this.getBreadcrumbName(event);
+            $(event.target).up("td").down("input[type='hidden']").setValue(beadcrumb);
+
+          }.bind(this)
+        });
+      }
+
+    },
+
+    getRootCategories: function() {
+      return this.izbergRootCategories;
+    },
+
+    getChildCategories: function(category_id) {
+      var result = [];
+      this.izbergCategories.each(function(category){
+        if (category.izberg_parent_category_id == category_id) {
+          result.push(category);
+        }
+      });
+      return result;
+    },
+
+    reloadIfNeeded: function() {
+      if (pendingRequest == 0) {
+        window.location.reload();
+      }
+    },
+
+    save: function() {
+      pendingRequest++;
+      var that = this;
+      new Ajax.Request('<?php echo $this->getPostSaveUrl() ?>', {
+        method:'post',
+        parameters: $(this.wrapperEl).select('form.matcherSelects')[0].serialize(true),
+        onSuccess: function(transport) {
+          pendingRequest--;
+          that.reloadIfNeeded()
+        },
+        onFailure: function() {
+          pendingRequest--;
+          that.reloadIfNeeded()
+        }
+      });
+    }
+
+});
+
+
+Event.observe(window, 'load', function() {
+  // We init categories
+  // Izberg categories
+  var izbergCategories = <?php echo json_encode($izbergCategories["items"])?>;
+  var izbergCategoriesInCache = <?php echo json_encode($allAlreadyMatchedIzbergCategories)?>;
+  var izbergRootCategories = <?php echo json_encode($izbergRootCategories)?>;
+
+  // Izberg application categories
+  var applicationCategories = <?php echo json_encode($applicationCategories["items"])?>;
+  var applicationCategoriesInCache = <?php echo json_encode($allAlreadyMatchedApplicationCategories)?>;
+  var applicationRootCategories = <?php echo json_encode($applicationRootCategories)?>;
+
+
+  var magentoCategories = <?php echo json_encode($this->getMagentoCategories())?>;
+  var izbergGenders = <?php echo json_encode($this->getGenders())?>;
+
+  new Izberg.MatchingCategories("matching_izberg_categories", izbergRootCategories, izbergCategories, magentoCategories, izbergCategoriesInCache, izbergGenders);
+  new Izberg.MatchingCategories("matching_application_categories", applicationRootCategories, applicationCategories, magentoCategories, applicationCategoriesInCache, izbergGenders);
+});
+</script>

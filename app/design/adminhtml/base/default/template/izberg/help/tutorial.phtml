@@ -1,0 +1,345 @@
+<div class="content-header">
+    <table cellspacing="0">
+        <tbody><tr>
+            <td><h3>Documentation</h3></td>
+        </tr>
+    </tbody></table>
+</div>
+
+<div class="tuto-content">
+  <div class="tuto-menu">
+    <ul>
+      <li>
+        <a href="#tuto_1">1 - Subscription</a>
+      </li>
+      <li>
+        <a href="#tuto_2">2 – Create an Application</a>
+      </li>
+      <li>
+        <a href="#tuto_3">3 - Dashboard</a>
+      </li>
+      <li>
+        <a href="#tuto_4">4 – Merchants</a>
+      </li>
+      <li>
+        <a href="#tuto_5">5 – Go to merchant backoffice</a>
+      </li>
+      <li>
+        <a href="#tuto_6">6 – Merchant backoffice</a>
+      </li>
+      <li>
+        <a href="#tuto_7">7 – Add products</a>
+      </li>
+      <li>
+        <a href="#tuto_8">8 – Inventory</a>
+      </li>
+      <li>
+        <a href="#tuto_9">9 - Back to the marketplace operator dashboard</a>
+      </li>
+      <li>
+        <a href="#tuto_10">10 – Install our magento module</a>
+      </li>
+      <li>
+        <a href="#tuto_11">11 – Configure the module</a>
+      </li>
+      <li>
+        <a href="#tuto_12">12 – Configure magmi</a>
+      </li>
+      <li>
+        <a href="#tuto_13">13 – Import your first merchants</a>
+      </li>
+      <li>
+        <a href="#tuto_14">14 – See products on magento</a>
+      </li>
+      <li>
+        <a href="#tuto_15">15 – Matching categories</a>
+      </li>
+      <li>
+        <a href="#tuto_video"><strong>Video tutorial</strong></a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="entity-edit tuto" id="matage-options-panel">
+      <div class="entry-edit-head">
+      <h4>IZBERG Magento Module</h4>
+      </div>
+      <!-- <div class="box">
+        <div class="videoWrapper">
+          <iframe width="620" height="415" src="http://www.youtube.com/embed/80vBAlgO7_w"></iframe>
+        </div>
+      </div> -->
+      <div>
+          <p>
+            The IZBERG magento module allows you to link any magento platform to your IZBERG application. This module keeps the orders, order status and products synchronized between the two platforms. It means that you can import products from IZBERG, and this products will be added to your magento website, users can purchase izberg-imported products exactly like they did with basic magento items. As a magento administrator, you will be able to manage the izberg-linked orders easily. For each IZBERG product bought, the information is sent through the IZBERG module to the seller whom the product(s) belong to, and everything else (shipping, order status...) is taken care by the IZBERG seller.
+          </p>
+
+          <p>
+            <strong>Note: All data are imported every hours, so you have to wait some minutes before to see your products created/update</strong>
+          </p>
+
+          <p>
+            <strong>Note: This module is based on magmi (<a href="http://wiki.magmi.org/index.php?title=Main_Page" target="_blank">website</a>), we use a custom magmi, you can found it here: <a href="/izberg-importer/web">/izberg-importer/web</a></strong>
+          </p>
+
+          <img scr="<?php echo $this->getSkinUrl('images/izberg/schema.png'); ?>"/>
+
+          <p>In this guide, we will cover the most basic steps to have the IZBERG Application, and it’s magento linked website up and running.</p>
+
+          <h3 id="tuto_1">1 - Subscription</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/01_inscription.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>
+                First of all, you have to subscribe to IZBERG. Create an account on
+                <a target="_blank" href="https://operator.izberg-marketplace.com/">
+                  https://operator.izberg-marketplace.com/
+                </a>
+              </p>
+            </div>
+          </div>
+
+
+          <h3 id="tuto_2">2 – Create an Application</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/02_createApp.png'); ?>"/>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/03_createApp2.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>
+                Once your account is created, you have to create an application, fill out the few information requested, the application namespace is the most important information, it is the string that will identify your application in the IZBERG environment .
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_3">3 - Dashboard</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/04_Dashboard.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>
+                You are redirected on the main IZBERG dashboard page, from here you will be able to manage every part of your application.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_4">4 – Merchants</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/05_merchants.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>
+                Products available in your app will match the stocks of the sellers who are linked to your app. In order to have products, you first have to create a seller, or link other sellers to your app.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_5">5 – Go to merchant backoffice</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/07_seeBackOffice.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>
+                You can for example create a merchant. Once your merchant is created, click on the left arrow button, you will be redirected to the seller dashboard from where you will be able to add, delete and manage products.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_6">6 – Merchant backoffice</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/08_backOffice.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>
+                You should be redirected to the seller dashboard/backoffice. Your first have to fill a few infos like descrption,  url, define your shipping policies, return sittings and others…
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_7">7 – Add products</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/09_inventory.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>
+                In the Inventory tab, there are two ways to add products to your seller dashboard. The first one is to add them individually using the “Add a product” button on the left. The second is via xml feed, in the data feed section, you will be able to upload a xml file, if it is correctly parsed, products will be added to your inventory.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_8">8 – Inventory</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/10_inventory.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>
+                Once your products are imported, they are displayed in the inventory, as a seller you can edit stocks and prices manually.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_9">9 - Back to the marketplace operator dashboard</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/11_backDashboard.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>
+                Once your seller is set up, it should be displayed as Active in your marketplace operator dashboard. The seller’s products can now be sold through your IZBERG Application.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_10">10 – Install our magento module</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/10_module_install.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>From here we are going to see how to install our magento module on your website.</p>
+
+              <p>
+                First, ask the module archive to our staff. Then, you have to use "Magento Connect" to import our module.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_11">11 – Configure the module</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/11_config_step1.png'); ?>"/>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/11_config_step2.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>First click on IZBERG->Settings menu</p>
+
+              <p>
+                Now you have to enter application params in this section. Do no hesitate to contact our support if you need any help. You get all this informations in step 3
+              </p>
+
+              <p>
+                First choose, your environment (sandbox or production) and fill your credentials
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_12">12 – Configure magmi</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/11-bis-magmi.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>You have to set your mysql credentials in our magmi. Go to <a href="/izberg-importer/web" target="blank">magmi</a></p>
+              <p>Enter your credentials, you can set it in module settings (IZBERG > Settings > Magmi importer credentials)</p>
+              <p>Click on tab Configuration</p>
+              <p>Fill required parts</p>
+            </div>
+          </div>
+
+          <h3 id="tuto_13">13 – Import your first merchants</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/13_magentoMerchants.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>From this section, you can see all the merchants linked to the application, in order to import the products you’ve got to follow these two steps:<br>
+              - click on menu IZBERG > merchants<br>
+              - click on the "Import from IZBERG" button if the list is empty<br>
+              - check the merchant you want to add.<br>
+              - in the “Action” dropdown menu on the upper right corner of the array, select “import products” and click on “submit”.<br>
+              The “import products” will be set to “Yes”. From now you’ll have to wait for about an hour for the periodic cron work to update the available products.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="tuto_14">14 – See products on magento</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/14_magentoProducts.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>Products are imported every hours, so, you have to wait a couple of hours before to see them</p>
+
+              <p>Once imported, the products are displayed in the products section, you won’t be able to edit infos through magento, only the sellers, through the IZBERG seller dashboard will be able to edit stocks, photos and prices. Although, IZBERG and magento are kept synchronized. The products should now be available to the magento buyers. </p>
+            </div>
+          </div>
+
+
+          <h3 id="tuto_15">15 – Matching categories</h3>
+
+          <div class="block-explain">
+            <div class="left">
+              <p>
+                <img src="<?php echo $this->getSkinUrl('images/izberg/15_magentoCategories.png'); ?>"/>
+              </p>
+            </div>
+            <div class="right">
+              <p>In the IZBERG>Matching>Matching IZBERG Categories section, you will be able to match IZBERG categories and Magento categories. This part of the configuration is very important to keep your store and products organized.</p>
+
+
+              <p>Now that your Magento website is linked to the IZBERG platform, the Magento module should be taking care of everything. If you imported products from an IZBERG seller, these products should be displayed in your shop, and users can purchase them easily. When a product is purchased, the informations about the user, amount and order appears in your magento administration panel, they are also sent to the IZBERG seller so he can take care of the shipping. The order status like “confirmed”, “shipped” or “cancelled” are also kept synchronized between the IZBERG seller, you, and the magento user.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="tuto_15">Video tutorial</h3>
+
+        <div id="tuto_video" class="box">
+          <div class="videoWrapper">
+            <iframe width="620" height="415" src="http://www.youtube.com/embed/80vBAlgO7_w"></iframe>
+          </div>
+        </div>
+  </div>
+</div>

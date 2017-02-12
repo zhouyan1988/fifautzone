@@ -1,0 +1,37 @@
+<legend><?php echo __('Check your configuration'); ?></legend>
+<table cellspacing="0" class="form-list">
+	<colgroup class="label"></colgroup>
+	<colgroup class="value"></colgroup>
+	<colgroup class="scope-label"></colgroup>
+	<colgroup class=""></colgroup>
+	<tbody>
+		<tr id="row_update_module">
+			<td class="label">
+				<label for="update_module"><?php echo $this->__('Module\'s version'); ?></label>
+			</td>
+			<td class="value">
+				<?php echo $this->getVersion(); ?>
+			</td>
+		</tr>
+		<tr id="raw_webhooks">
+			<td class="label">
+				<label for="update_module"><?php echo $this->__('Webhooks'); ?></label>
+			</td>
+			<td class="value">
+				<?php
+					if ($this->hasWebhookConfigured()) {
+				?>
+					<span style="color: #49a81a">
+					<?php echo $this->__("Your webhooks are well configured !"); ?>
+				  </span>
+				<?php } else { ?>
+					<?php echo $this->__("Webhook not configured"); ?>
+					-
+					<a href="<?php echo $this->getUrl("izberg/adminhtml_help/createWebhooks") ?>">
+						<?php echo $this->__("Create webhooks"); ?>
+					</a>
+				<?php } ?>
+			</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,28 @@
+<?php 
+/**
+ * @category    Development
+ * @package     Singsys_Fbconnect
+ * @version     1.0.0
+ * @copyright   Copyright (c) 2015 SingsysShop (https://www.singsys.com)
+ * @author	Singsys
+ */
+?>
+<div class="singsys-fbconnect-login">
+    <div class="account-login">
+        <div class="<?php echo $this->_getColSet(); ?> singsys-fbconnect-login-upper">           
+            <?php if($this->_facebookEnabled()): ?>
+            <div class="<?php echo $this->_getDescCol(); ?> new-users singsys-fbconnect-login-upper-facebook">
+            </div>
+            <?php endif; ?>
+        </div>
+        <div class="<?php echo $this->_getColSet(); ?> singsys-fbconnect-login-lower">
+            <?php if($this->_facebookEnabled()): ?>
+            <div class="<?php echo $this->_getButtCol(); ?> singsys-fbconnect-login-lower-facebook">
+                <div class="buttons-set">
+                    <?php echo $this->getChildHtml('singsys_fbconnect_facebook_login_button'); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

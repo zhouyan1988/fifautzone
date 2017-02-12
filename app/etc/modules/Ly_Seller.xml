@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ly_Seller>
+            <active>false</active>
+            <codePool>community</codePool>
+        </Ly_Seller>
+    </modules>
+</config>

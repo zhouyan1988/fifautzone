@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <izberg translate="label" module="izberg">
+            <label>Izberg Extension</label>
+            <sort_order>100</sort_order>
+        </izberg>
+    </tabs>
+    <sections>
+        <izberg translate="label" module="izberg">
+            <label>Settings</label>
+            <tab>izberg</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <izberg_settings_info translate="label" module="izberg">
+                  <label>Module status</label>
+                  <frontend_model>Sebfie_Izberg_Block_Adminhtml_System_Config_Check</frontend_model>
+                  <sort_order>1</sort_order>
+                  <frontend_type>text</frontend_type>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                </izberg_settings_info>
+                <izberg_order_settings translate="label" module="izberg">
+                  <label>Order settings</label>
+                  <sort_order>2</sort_order>
+                  <frontend_type>text</frontend_type>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <fields>
+                      <izberg_default_order_state translate="label">
+                            <label>Default order state for izberg order</label>
+                            <comment>When an order occurs with izberg products, the order containing izberg products has this status</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>izberg/adminhtml_system_config_source_statuses</source_model>
+                        </izberg_default_order_state>
+                  </fields>
+                </izberg_order_settings>
+                <izberg_magmi_settings translate="label" module="izberg">
+                  <label>Magmi importer credentials</label>
+                  <sort_order>2</sort_order>
+                  <frontend_type>text</frontend_type>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <fields>
+                      <izberg_magmi_login translate="label">
+                            <label>Login to access izberg magmi</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                      </izberg_magmi_login>
+                      <izberg_magmi_password translate="label">
+                            <label>Password to access izberg magmi</label>
+                            <frontend_type>password</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_magmi_password>
+                  </fields>
+                </izberg_magmi_settings>
+                <izberg_jobs_settings translate="label" module="izberg">
+                  <label>Izberg import jobs settings</label>
+                  <sort_order>2</sort_order>
+                  <frontend_type>text</frontend_type>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <fields>
+                      <izberg_concurrency_product_jobs translate="label">
+                            <label>Number of products jobs run every 5 minutes</label>
+                            <comment>This jobs are created when you import products from a merchant</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <backend_model>izberg/adminhtml_system_config_integer</backend_model>
+                      </izberg_concurrency_product_jobs>
+                      <izberg_concurrency_webhook_jobs translate="label">
+                            <label>Number of webhook jobs run every 5 minutes</label>
+                            <comment>This jobs are created from Izberg when a merchant update a product to apply this modification on your imported product</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <backend_model>izberg/adminhtml_system_config_integer</backend_model>
+                      </izberg_concurrency_webhook_jobs>
+                      <izberg_products_by_job translate="label">
+                            <label>Number of products to run by job</label>
+                            <comment>When you import merchant products, it will split catalog on several jobs imported X products</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <backend_model>izberg/adminhtml_system_config_integer</backend_model>
+                      </izberg_products_by_job>
+                  </fields>
+                </izberg_jobs_settings>
+                <izberg_product_settings translate="label" module="izberg">
+                  <label>Product settings</label>
+                  <sort_order>3</sort_order>
+                  <frontend_type>text</frontend_type>
+                  <show_in_default>1</show_in_default>
+                  <show_in_website>1</show_in_website>
+                  <show_in_store>1</show_in_store>
+                  <comment>You should have an izberg account to use this extension you can create one by clicking on the follow link </comment>
+                  <link_url>https://account.izberg-marketplace.com/signup/</link_url>
+                  <frontend_model>izberg/adminhtml_system_config_fieldset_group</frontend_model>
+                  <fields>
+                    <izberg_attribute_set translate="label">
+                      <label>Attribute set to use on product importation</label>
+                      <comment>(Already imported products will not be updated)</comment>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>1</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>izberg/adminhtml_system_config_source_attributeset</source_model>
+                      <backend_model>izberg/adminhtml_attributeset</backend_model>
+                    </izberg_attribute_set>
+                    <izberg_description_html translate="label">
+                      <label>Use izberg description in html</label>
+                      <comment>Imported product descriptions will use html tag</comment>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>2</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </izberg_description_html>
+                    <izberg_first_image_as_baseimage translate="label">
+                      <label>Use the first image of izberg products as base image </label>
+                      <comment>When we import the first image will be used as thumbnail</comment>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>4</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </izberg_first_image_as_baseimage>
+                    <izberg_first_image_as_small_image translate="label">
+                      <label>Use the first image of izberg products as small image </label>
+                      <comment>When we import the first image will be used as thumbnail</comment>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>5</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </izberg_first_image_as_small_image>
+                    <izberg_first_image_as_thumbnail translate="label">
+                      <label>Use the first image of izberg products as thumbnail </label>
+                      <comment>When we import the first image will be used as thumbnail</comment>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>6</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </izberg_first_image_as_thumbnail>
+
+                    <izberg_price_with_tax translate="label">
+                      <label>Use price with tax from izberg </label>
+                      <comment>Set no to use product price without tax</comment>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>7</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </izberg_price_with_tax>
+                    <izberg_product_visibility_configurable translate="label">
+                      <label>Visibility by default for configurable products</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>8</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>izberg/adminhtml_system_config_source_visibility</source_model>
+                    </izberg_product_visibility_configurable>
+                    <izberg_product_visibility_configurable_simple translate="label">
+                      <label>Visibility by default for simple products from configurable</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>9</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>izberg/adminhtml_system_config_source_visibility</source_model>
+                    </izberg_product_visibility_configurable_simple>
+                    <izberg_product_visibility_simple translate="label">
+                      <label>Visibility by default for simple products</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>10</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>izberg/adminhtml_system_config_source_visibility</source_model>
+                    </izberg_product_visibility_simple>
+                    <izberg_product_tax_group translate="label">
+                      <label>Tax group to use for izberg products </label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>11</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>izberg/adminhtml_system_config_source_taxgroup</source_model>
+                    </izberg_product_tax_group>
+                    <izberg_link_simple_products_from_configurable_to_categories translate="label">
+                      <label>Add simple products from configurable products to categories </label>
+                      <comment>When we import a configurable product from izberg, add (or not) associated simple products to matching categories in magento</comment>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>12</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </izberg_link_simple_products_from_configurable_to_categories>
+                    <izberg_action_if_no_stock translate="label">
+                      <label>Action on products without stock</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>12</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>izberg/adminhtml_system_config_source_ifnostock</source_model>
+                    </izberg_action_if_no_stock>
+                    <izberg_add_to_magento_parent_categories_if_match translate="label">
+                      <label>When a category match, link product to all parent categories</label>
+                      <frontend_type>select</frontend_type>
+                      <sort_order>12</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                      <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </izberg_add_to_magento_parent_categories_if_match>
+                    <izberg_default_product_attribute translate="label">
+                      <label>Default value for imported products</label>
+                      <comment>Expected a validate json structure like { "custom_attribute_name" : "custom_attribute_value"}. On every product imported, product attributes will be feed with this json value.</comment>
+                      <frontend_type>textarea</frontend_type>
+                      <sort_order>13</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                    </izberg_default_product_attribute>
+                    <izberg_default_product_name_format translate="label">
+                      <label>Name format</label>
+                      <comment>You can use this variables : {{name}}, {{brand}}, {{variation|color}}, {{variation|size}}. Si vous voulez qu'un caratère n'apparaisse que lorsque la variable existe, merci de le mettre aprés le "{{". Exemple : {{brand}} - {{name}}{{ - variation|color}}{{ - variation|size}}</comment>
+                      <frontend_type>textarea</frontend_type>
+                      <sort_order>14</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                    </izberg_default_product_name_format>
+                  </fields>
+                </izberg_product_settings>
+
+                <izberg_settings translate="label" module="izberg">
+                    <label>Module settings</label>
+                    <sort_order>4</sort_order>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>You should have an izberg account to use this extension you can create one by clicking on the follow link </comment>
+                    <link_url>https://account.izberg-marketplace.com/signup/</link_url>
+                    <frontend_model>izberg/adminhtml_system_config_fieldset_group</frontend_model>
+                    <fields>
+                        <izberg_debug translate="label">
+                            <label>Enable the debugger mode for the izberg library </label>
+                            <comment>All order created on izberg will not be treated</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </izberg_debug>
+                        <izberg_development translate="label">
+                            <label>Enable development for izberg module </label>
+                            <comment>Will allow you to force import from "Izberg->Manage product" view</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </izberg_development>
+                        <izberg_sandbox translate="label">
+                            <label>Use sandbox mode </label>
+                            <comment>All order created on izberg will be on the sandbox environment</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>izberg/adminhtml_sandbox</backend_model>
+                            <comment>
+                            <![CDATA[
+                                <script type="text/javascript">
+                                    Event.observe('izberg_izberg_settings_izberg_sandbox', 'change', function() {
+                                        alert('!! CAUTION !! If you change this value, all previous imported data will be cleared. Save configuration will also take many time');
+                                    })
+                                </script>
+                            ]]>
+                            </comment>
+                        </izberg_sandbox>
+                    </fields>
+                </izberg_settings>
+                <production_izberg_cedentials translate="label" module="izberg">
+                    <label>Production Credentials</label>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>5</sort_order>
+                    <fields>
+                        <izberg_api_key translate="label">
+                            <label>API Key </label>
+                            <comment>You can find your api key on your izberg account</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_api_key>
+                        <izberg_api_secret_key translate="label">
+                            <label>API SECRET Key </label>
+                            <comment>You can find your api secret key on your izberg account</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_api_secret_key>
+                        <izberg_access_token translate="label">
+                            <label>API ACCESS TOKEN </label>
+                            <comment>You can find your access token on your izberg account</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_access_token>
+                        <izberg_username translate="label">
+                            <label>Username </label>
+                            <comment>You can find your username on your izberg account</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>26</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_username>
+                        <izberg_app_namespace translate="label">
+                            <label>Application namespace </label>
+                            <comment>You can find your app namespace on your izberg account</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_app_namespace>
+                        <izberg_email translate="label">
+                            <label>Email </label>
+                            <comment>Your izberg account email</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_email>
+                        <izberg_first_name translate="label">
+                            <label>First name </label>
+                            <comment>Your izberg account first name</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_first_name>
+                        <izberg_last_name translate="label">
+                            <label>Last name </label>
+                            <comment>Your izberg account last name</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_last_name>
+                    </fields>
+                </production_izberg_cedentials>
+                <sandbox_izberg_cedentials translate="label" module="izberg">
+                    <label>Sandbox Credentials</label>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>6</sort_order>
+                    <fields>
+                        <izberg_api_key translate="label">
+                            <label>API Key </label>
+                            <comment>You can find your api key on your izberg account</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_api_key>
+                        <izberg_api_secret_key translate="label">
+                            <label>API SECRET Key </label>
+                            <comment>You can find your api secret key on your izberg account</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_api_secret_key>
+                        <izberg_access_token translate="label">
+                            <label>API ACCESS TOKEN </label>
+                            <comment>You can find your access token on your izberg account</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_access_token>
+                        <izberg_username translate="label">
+                            <label>Username </label>
+                            <comment>You can find your username on your izberg account</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>26</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_username>
+                        <izberg_app_namespace translate="label">
+                            <label>Application namespace </label>
+                            <comment>You can find your app namespace on your izberg account</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_app_namespace>
+                        <izberg_email translate="label">
+                            <label>Email </label>
+                            <comment>Your izberg account email</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_email>
+                        <izberg_first_name translate="label">
+                            <label>First name </label>
+                            <comment>Your izberg account first name</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_first_name>
+                        <izberg_last_name translate="label">
+                            <label>Last name </label>
+                            <comment>Your izberg account last name</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </izberg_last_name>
+                    </fields>
+                </sandbox_izberg_cedentials>
+
+            </groups>
+        </izberg>
+    </sections>
+</config>

@@ -1,0 +1,70 @@
+<div class="content-header">
+   <table cellspacing="0">
+      <tbody>
+         <tr>
+            <td>
+               <h3 class="head-dashboard"><?php echo $this->__("Izberg webhooks configuration for your website") ?></h3>
+               <div class="content-buttons-placeholder">
+                  <p class="content-buttons form-buttons">
+                    <button title="Create webhooks" type="button" class="scalable save" style="" onclick="window.location='<?php echo $this->getAutomaticWebhookUrl()?>'">
+                      <span>
+                        <span>
+                          <span><?php echo $this->__("Create them on your izberg account") ?></span>
+                        </span>
+                      </span>
+                    </button>
+                  </p>
+               </div>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+<div class="dashboard-container">
+   <table cellspacing="25" width="100%">
+      <tbody>
+         <tr>
+            <td>
+               <div class="entry-edit">
+                  <div class="entry-edit-head">
+                     <h4><?php echo $this->__("Product webhooks") ?></h4>
+                  </div>
+                  <fieldset>
+                     <div>
+                      <strong style="font-size:14px;"><?php echo $this->__("Product offer updated") ?> :</strong>
+                      <span  class="bold"><?php echo $this->getProductOfferUpdatedUrl() ?></span>
+                     </div>
+                  </fieldset>
+               </div>
+               <div class="entry-edit">
+                  <div class="entry-edit-head">
+                     <h4><?php echo $this->__("Order webhooks") ?></h4>
+                  </div>
+                  <fieldset>
+                     <div>
+                      <strong style="font-size:14px;"><?php echo $this->__("Order confirmed") ?> :</strong>
+                      <span  class="bold"><?php echo $this->getMerchantOrderConfirmedUrl() ?></span>
+                     </div>
+                     <div>
+                      <strong style="font-size:14px;"><?php echo $this->__("Order sent") ?> :</strong>
+                      <span  class="bold"><?php echo $this->getMerchantOrderSentUrl() ?></span>
+                     </div>
+                     <div>
+                      <strong style="font-size:14px;"><?php echo $this->__("Order received") ?> :</strong>
+                      <span  class="bold"><?php echo $this->getMerchantOrderReceivedUrl() ?></span>
+                     </div>
+                     <div>
+                      <strong style="font-size:14px;"><?php echo $this->__("Order cancelled") ?> :</strong>
+                      <span  class="bold"><?php echo $this->getMerchantOrderCancelledUrl() ?></span>
+                     </div>
+                     <div>
+                      <strong style="font-size:14px;"><?php echo $this->__("Merchant available") ?> :</strong>
+                      <span  class="bold"><?php echo $this->getMerchantAvailableUrl() ?></span>
+                     </div>
+                  </fieldset>
+               </div>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>

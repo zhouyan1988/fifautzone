@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Vfeelit_RestConnect>
+            <version>0.1.0</version>
+        </Vfeelit_RestConnect>
+    </modules>
+	
+    <frontend>		
+        <routers>
+            <restconnect>
+                <use>standard</use>
+                <args>
+                    <module>Vfeelit_RestConnect</module>
+                    <frontName>restconnect</frontName>
+                </args>
+            </restconnect>
+        </routers>
+    </frontend>
+    
+	<global>
+		<models>
+			<restconnect>
+				<class>Vfeelit_RestConnect_Model</class>
+			</restconnect>
+		</models>
+	</global>
+</config>

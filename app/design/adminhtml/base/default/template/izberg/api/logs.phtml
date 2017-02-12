@@ -1,0 +1,26 @@
+<div class="content-header">
+   <table cellspacing="0">
+      <tbody>
+         <tr>
+            <td>
+               <h3 class="head-dashboard"><?php echo $this->__("Izberg logs") ?></h3>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+<div class="dashboard-container">
+   <table cellspacing="25" width="100%">
+      <tbody>
+        <?php foreach(array_reverse($this->getLogFile()) as $line) : ?>
+        <?php $line = trim($line); ?>
+        <?php if (empty($line)) continue;?>
+        <tr>
+          <td>
+            <?php echo $line; ?>
+          </td>
+        </tr>
+        <?php endforeach ?>
+      </tbody>
+   </table>
+</div>

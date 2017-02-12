@@ -1,0 +1,61 @@
+div.singsys-fbconnect-register,
+div.singsys-fbconnect-checkout,
+div.singsys-fbconnect {
+    margin-top: 28px;
+}
+
+div.singsys-fbconnect-login .content {
+    min-height: 100px;
+}
+
+div.singsys-fbconnect-register .fieldset {
+    margin: 0px;
+}
+
+div.singsys-fbconnect-account .col3-set .col-1 {
+    width: 29%
+}
+
+div.singsys-fbconnect-account .col3-set .col-2 {
+    width: 49%
+}
+
+div.singsys-fbconnect-account .col3-set .col-3 {
+    width: 19%
+}
+
+div.singsys-fbconnect-account .col2-set .col-1 {
+    width: 79%
+}
+
+div.singsys-fbconnect-account .col2-set .col-2 {
+    width: 19%
+}
+
+div.singsys-fbconnect-facebook{
+    float: right;
+    height: 26px !important;
+}
+div.singsys-fbconnect-facebook-right{
+ display: none;
+    float: left !important;
+    height: 30px !important;
+    width: 3px !important;
+    background: transparent url('../images/login-button-right.png') no-repeat top left !important;
+}
+div.singsys-fbconnect-facebook-inner a{
+	background: transparent url('../images/login-button-left.png') no-repeat top left !important;
+    border-radius: 26px;
+    color: #ccc !important;
+    float: left !important;
+    font-size: 12px;
+    font-weight: bold;
+    height: 40px !important;
+    line-height: 16px !important;
+    margin: 0 !important;
+    padding: 12px 19px 5px 47px !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    width: auto;
+	background-color: #3b5998 !important;
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <customer_account_login>
+        <reference name="head">
+            <action method="addItem" ifconfig="singsys_fbconnect/startup/enabled">
+                <type>skin_css</type>
+                <name>singsys_fbconnect/css/styles.css</name>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="singsys_fbconnect/login" name="singsys_fbconnect_login">
+                <block type="singsys_fbconnect/facebook_button" name="singsys_fbconnect_facebook_login_button" />
+            </block>
+        </reference>
+    </customer_account_login>     
+    <checkout_onepage_index>
+        <reference name="head">
+            <action method="addItem" ifconfig="singsys_fbconnect/startup/enabled">
+                <type>skin_css</type>
+                <name>singsys_fbconnect/css/styles.css</name>
+            </action>
+        </reference>
+        <reference name="checkout.onepage.login">
+            <action method="setTemplate" >
+                <template>singsys/fbconnect/checkout/onepage/login.phtml</template>
+            </action>
+            <block type="singsys_fbconnect/checkout" name="singsys_fbconnect_checkout">
+                <block type="singsys_fbconnect/facebook_button" name="singsys_fbconnect_checkout_facebook_button" />
+            </block>
+        </reference>
+    </checkout_onepage_index>
+</layout>

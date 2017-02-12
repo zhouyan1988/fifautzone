@@ -1,0 +1,59 @@
+<?php
+   /**
+    * Magento
+    *
+    * NOTICE OF LICENSE
+    *
+    * This source file is subject to the Academic Free License (AFL 3.0)
+    * that is bundled with this package in the file LICENSE_AFL.txt.
+    * It is also available through the world-wide-web at this URL:
+    * http://opensource.org/licenses/afl-3.0.php
+    * If you did not receive a copy of the license and are unable to
+    * obtain it through the world-wide-web, please send an email
+    * to license@magentocommerce.com so we can send you a copy immediately.
+    *
+    * DISCLAIMER
+    *
+    * Do not edit or add to this file if you wish to upgrade Magento to newer
+    * versions in the future. If you wish to customize Magento for your
+    * needs please refer to http://www.magentocommerce.com for more information.
+    *
+    * @category    design
+    * @package     default_default
+    * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+    * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+    */
+   ?>
+<?php
+ /**
+  * Template for block Mage_Adminhtml_Block_Customer_Edit_Tab_View
+  */
+ $coreHelper = Mage::helper('core');
+ $job = $this->getJob();
+ ?>
+
+<div class="main-col-inner">
+  <div class="content-header">
+     <h3 class="icon-head head-products"><?php echo Mage::helper('izberg')->__('Job information') ?></h3>
+     <div class="content-buttons-placeholder">
+        <p class="content-buttons form-buttons">
+          <button title="Run" type="button" class="scalable" onclick="setLocation('<?php echo $this->getRunUrl() ?>')" style=""><span><span><span><?php echo $this->__("Run now")?></span></span></span></button>
+          <button title="Back" type="button" class="scalable back" onclick="setLocation('<?php echo $this->getBackUrl() ?>')" style=""><span><span><span><?php echo $this->__("back")?></span></span></span></button></p>
+     </div>
+  </div>
+   <div class="entry-edit">
+      <div class="entry-edit-head">
+         <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('izberg')->__('Messages') ?></h4>
+      </div>
+      <div class="fieldset fieldset-wide">
+          <table class="form-list">
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Messages') ?></label></td>
+                  <td class="value"><strong><?php echo nl2br($job->getMessages()) ?></strong></td>
+              </tr>
+          </table>
+      </div>
+   </div>
+
+
+</div>

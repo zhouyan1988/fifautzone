@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<layout>
+  <izberg_adminhtml_help_tutorial>
+    <reference name="head">
+        <!-- <action method="addCss">
+            <name>css/izberg/pure.css</name>
+        </action> -->
+        <action method="addCss">
+            <name>css/izberg/documentation.css</name>
+        </action>
+    </reference>
+  </izberg_adminhtml_help_tutorial>
+
+  <adminhtml_catalog_product_edit>
+    <reference name="product_tabs">
+      <action method="addTab">
+        <name>izberg_events</name>
+        <block>izberg/adminhtml_catalog_product_tab_events</block>
+      </action>
+    </reference>
+  </adminhtml_catalog_product_edit>
+
+
+  <adminhtml_sales_order_view>
+    <reference name="sales_order_tabs">
+      <action method="addTab">
+        <name>izberg_events</name>
+        <block>izberg/adminhtml_sales_order_tab_events</block>
+      </action>
+    </reference>
+  </adminhtml_sales_order_view>
+</layout>

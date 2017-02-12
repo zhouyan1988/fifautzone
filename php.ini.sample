@@ -1,0 +1,77 @@
+<div class="em-box-border-top em-box-cate">
+<div class="row">
+<div class="em-tabs-widget tabs-widget ">
+<div id="emajaxtabs_1" class="em-tabs emajaxtabs">
+ 
+<div class="col-xs-24 col-sm-19 row last">
+<div class="tab-content-container">
+<div id="tab_emajaxtabs_1_1" class="tab-content active">
+<div class="col-xs-24 col-sm-6 text-center">
+<div class="em-effect06"><a class="banner-img em-eff06-05" title="em-sample-title" href="#"> <img class="img-responsive retina-img" alt="em-sample-alt" src="{{skin url='images/media/home/em_ads04.jpg'}}" /> </a></div>
+</div>
+<div class="col-xs-24 col-sm-18 text-center clear-padding last">{{widget type="filterproducts/listcustom" category="553" type_filter="4" featured="em_featured" limit_count="10" column_count="2" order_by="name asc" custom_class="tab-1" show="thumb,name,review,price,label,addtocart,addto" thumbnail_width="200" thumbnail_height="242" choose_template="custom_template" custom_theme="em_filterproducts/custom_multi_rows_style02.phtml" slider_enable="1" slider_items="4" slider_items_desktop="3" slider_items_desktop_small="2" slider_items_tablet="2" slider_items_mobile="2" slider_speed="800" slider_rewindspeed="800" slider_navigation="1" slider_touch_drag="1"}}</div>
+</div>
+<div id="tab_emajaxtabs_1_2" class="tab-content">
+<div class="col-xs-24 col-sm-6 text-center">
+<div class="em-effect06"><a class="banner-img em-eff06-05" title="em-sample-title" href="#"> <img class="img-responsive retina-img" alt="em-sample-alt" src="{{skin url='images/media/home/em_ads05.jpg'}}" /> </a></div>
+</div>
+<div class="col-xs-24 col-sm-18 text-center clear-padding last">{{widget type="filterproducts/listcustom" category="35" type_filter="4" featured="em_featured" limit_count="10" column_count="2" order_by="name asc" custom_class="tab-2" show="thumb,name,review,price,label,addtocart,addto" thumbnail_width="200" thumbnail_height="242" choose_template="custom_template" custom_theme="em_filterproducts/custom_multi_rows_style02.phtml" slider_enable="1" slider_items="4" slider_items_desktop="3" slider_items_desktop_small="2" slider_items_tablet="2" slider_items_mobile="2" slider_speed="800" slider_rewindspeed="800" slider_navigation="1" slider_touch_drag="1"}}</div>
+</div>
+<div id="tab_emajaxtabs_1_3" class="tab-content">
+<div class="col-xs-24 col-sm-6 text-center">
+<div class="em-effect06"><a class="banner-img em-eff06-05" title="em-sample-title" href="#"> <img class="img-responsive retina-img" alt="em-sample-alt" src="{{skin url='images/media/home/em_ads04.jpg'}}" /> </a></div>
+</div>
+<div class="col-xs-24 col-sm-18 text-center clear-padding last">{{widget type="filterproducts/listcustom" category="36" type_filter="1" featured="em_featured" limit_count="10" column_count="2" order_by="name asc" custom_class="ajaxtab1-tab-3" show="thumb,name,review,price,label,addtocart,addto" thumbnail_width="200" thumbnail_height="242" choose_template="custom_template" custom_theme="em_filterproducts/custom_multi_rows_style02.phtml" slider_enable="1" slider_items="4" slider_items_desktop="3" slider_items_desktop_small="2" slider_items_tablet="2" slider_items_mobile="2" slider_speed="800" slider_rewindspeed="800" slider_navigation="1" slider_touch_drag="1"}}</div>
+</div>
+<div id="tab_emajaxtabs_1_4" class="tab-content">
+<div class="col-xs-24 col-sm-6 text-center">
+<div class="em-effect06"><a class="banner-img em-eff06-05" title="em-sample-title" href="#"> <img class="img-responsive retina-img" alt="em-sample-alt" src="{{skin url='images/media/home/em_ads05.jpg'}}" /> </a></div>
+</div>
+<div class="col-xs-24 col-sm-18 text-center clear-padding last">
+{{widget type="filterproducts/listcustom" category="38" type_filter="1" featured="em_featured" limit_count="10" column_count="2" order_by="name asc" custom_class="tab-4" show="thumb,name,review,price,label,addtocart,addto" thumbnail_width="200" thumbnail_height="242" choose_template="custom_template" custom_theme="em_filterproducts/custom_multi_rows_style02.phtml" slider_enable="1" slider_items="4" slider_items_desktop="3" slider_items_desktop_small="2" slider_items_tablet="2" slider_items_mobile="2" slider_speed="800" slider_rewindspeed="800" slider_navigation="1" slider_touch_drag="1"}}
+
+
+</div>
+</div>
+<div id="tab_emajaxtabs_1_5" class="tab-content">
+<div class="col-xs-24 col-sm-6 text-center">
+<div class="em-effect06"><a class="banner-img em-eff06-05" title="em-sample-title" href="#"> <img class="img-responsive retina-img" alt="em-sample-alt" src="{{skin url='images/media/home/em_ads04.jpg'}}" /> </a></div>
+</div>
+<div class="col-xs-24 col-sm-18 text-center clear-padding last">{{widget type="filterproducts/listcustom" category="37" type_filter="1" featured="em_featured" limit_count="10" column_count="2" order_by="name asc" custom_class="tab-5" show="thumb,name,review,price,label,addtocart,addto" thumbnail_width="200" thumbnail_height="242" choose_template="custom_template" custom_theme="em_filterproducts/custom_multi_rows_style02.phtml" slider_enable="1" slider_items="4" slider_items_desktop="3" slider_items_desktop_small="2" slider_items_tablet="2" slider_items_mobile="2" slider_speed="800" slider_rewindspeed="800" slider_navigation="1" slider_touch_drag="1"}}</div>
+</div>
+<div id="tab_emajaxtabs_1_6" class="tab-content">
+<div class="col-xs-24 col-sm-6 text-center">
+<div class="em-effect06"><a class="banner-img em-eff06-05" title="em-sample-title" href="#"> <img class="img-responsive retina-img" alt="em-sample-alt" src="{{skin url='images/media/home/em_ads05.jpg'}}" /> </a></div>
+</div>
+<div class="col-xs-24 col-sm-18 text-center clear-padding last">{{widget type="filterproducts/listcustom" category="36" type_filter="1" featured="em_featured" limit_count="10" column_count="2" order_by="name asc" custom_class="tab-6" show="thumb,name,review,price,label,addtocart,addto" thumbnail_width="200" thumbnail_height="242" choose_template="custom_template" custom_theme="em_filterproducts/custom_multi_rows_style02.phtml" slider_enable="1" slider_items="4" slider_items_desktop="3" slider_items_desktop_small="2" slider_items_tablet="2" slider_items_mobile="2" slider_speed="800" slider_rewindspeed="800" slider_navigation="1" slider_touch_drag="1"}}</div>
+</div>
+<div id="tab_emajaxtabs_1_7" class="tab-content">
+<div class="col-xs-24 col-sm-6 text-center">
+<div class="em-effect06"><a class="banner-img em-eff06-05" title="em-sample-title" href="#"> <img class="img-responsive retina-img" alt="em-sample-alt" src="{{skin url='images/media/home/em_ads04.jpg'}}" /> </a></div>
+</div>
+<div class="col-xs-24 col-sm-18 text-center clear-padding last">{{widget type="filterproducts/listcustom" category="38" type_filter="1" featured="em_featured" limit_count="10" column_count="2" order_by="name asc" custom_class="tab-7" show="thumb,name,review,price,label,addtocart,addto" thumbnail_width="200" thumbnail_height="242" choose_template="custom_template" custom_theme="em_filterproducts/custom_multi_rows_style02.phtml" slider_enable="1" slider_items="4" slider_items_desktop="3" slider_items_desktop_small="2" slider_items_tablet="2" slider_items_mobile="2" slider_speed="800" slider_rewindspeed="800" slider_navigation="1" slider_touch_drag="1"}}</div>
+</div>
+<div id="tab_emajaxtabs_1_8" class="tab-content">
+<div class="col-xs-24 col-sm-6 text-center">
+<div class="em-effect06"><a class="banner-img em-eff06-05" title="em-sample-title" href="#"> <img class="img-responsive retina-img" alt="em-sample-alt" src="{{skin url='images/media/home/em_ads05.jpg'}}" /> </a></div>
+</div>
+<div class="col-xs-24 col-sm-18 text-center clear-padding last">{{widget type="filterproducts/listcustom" category="37" type_filter="1" featured="em_featured" limit_count="10" column_count="2" order_by="name asc" custom_class="tab-8" show="thumb,name,review,price,label,addtocart,addto" thumbnail_width="200" thumbnail_height="242" choose_template="custom_template" custom_theme="em_filterproducts/custom_multi_rows_style02.phtml" slider_enable="1" slider_items="4" slider_items_desktop="3" slider_items_desktop_small="2" slider_items_tablet="2" slider_items_mobile="2" slider_speed="800" slider_rewindspeed="800" slider_navigation="1" slider_touch_drag="1"}}</div>
+</div>
+<div id="tab_emajaxtabs_1_9" class="tab-content">
+<div class="col-xs-24 col-sm-6 text-center">
+<div class="em-effect06"><a class="banner-img em-eff06-05" title="em-sample-title" href="#"> <img class="img-responsive retina-img" alt="em-sample-alt" src="{{skin url='images/media/home/em_ads04.jpg'}}" /> </a></div>
+</div>
+<div class="col-xs-24 col-sm-18 text-center clear-padding last">{{widget type="filterproducts/listcustom" category="36" type_filter="1" featured="em_featured" limit_count="10" column_count="2" order_by="name asc" custom_class="tab-9" show="thumb,name,review,price,label,addtocart,addto" thumbnail_width="200" thumbnail_height="242" choose_template="custom_template" custom_theme="em_filterproducts/custom_multi_rows_style02.phtml" slider_enable="1" slider_items="4" slider_items_desktop="3" slider_items_desktop_small="2" slider_items_tablet="2" slider_items_mobile="2" slider_speed="800" slider_rewindspeed="800" slider_navigation="1" slider_touch_drag="1"}}</div>
+</div>
+<div id="tab_emajaxtabs_1_10" class="tab-content">
+<div class="col-xs-24 col-sm-6 text-center">
+<div class="em-effect06"><a class="banner-img em-eff06-05" title="em-sample-title" href="#"> <img class="img-responsive retina-img" alt="em-sample-alt" src="{{skin url='images/media/home/em_ads05.jpg'}}" /> </a></div>
+</div>
+<div class="col-xs-24 col-sm-18 text-center clear-padding last">{{widget type="filterproducts/listcustom" category="38" type_filter="1" featured="em_featured" limit_count="10" column_count="2" order_by="name asc" custom_class="tab-10" show="thumb,name,review,price,label,addtocart,addto" thumbnail_width="200" thumbnail_height="242" choose_template="custom_template" custom_theme="em_filterproducts/custom_multi_rows_style02.phtml" slider_enable="1" slider_items="4" slider_items_desktop="3" slider_items_desktop_small="2" slider_items_tablet="2" slider_items_mobile="2" slider_speed="800" slider_rewindspeed="800" slider_navigation="1" slider_touch_drag="1"}}</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

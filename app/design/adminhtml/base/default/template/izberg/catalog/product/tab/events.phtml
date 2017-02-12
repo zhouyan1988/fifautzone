@@ -1,0 +1,24 @@
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend">
+          <?php echo Mage::helper('catalog')->__('Izberg events') ?>
+        </h4>
+    </div>
+    <fieldset>
+      <h5>All izberg events : </h5>
+      <ul>
+        <?php foreach($this->getLogs() as $log) { ?>
+          <li>
+            <strong>
+              <?php echo Mage::helper('core')->formatDate($log->getCreatedAt(), Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM, false);?>,
+              <?php echo Mage::helper('core')->formatTime($log->getCreatedAt(), Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM, false);?>
+            </strong>
+            <span>
+              &nbsp;&nbsp;-&nbsp;&nbsp;
+            </span>
+            <?php echo $log->getMessage() ?>
+          </li>
+        <?php } ?>
+      </ul>
+    </fieldset>
+</div>

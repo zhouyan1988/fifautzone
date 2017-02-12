@@ -1,0 +1,117 @@
+<?php
+ /**
+  * Template for block Mage_Adminhtml_Block_Customer_Edit_Tab_View
+  */
+ $coreHelper = Mage::helper('core');
+ $product = $this->getProduct();
+ ?>
+
+<div class="main-col-inner">
+   <div class="entry-edit">
+      <div class="entry-edit-head">
+         <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('izberg')->__('General') ?></h4>
+      </div>
+      <div class="fieldset fieldset-wide">
+          <table class="form-list">
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Id') ?></label></td>
+                  <td class="value"><strong><?php echo $product->getId() ?></strong></td>
+              </tr>
+              <?php if ($product->getFirstImage()) : ?>
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Image') ?></label></td>
+                  <td class="value">
+                    <img src="<?php echo $product->getFirstImage() ?>" alt="<?php echo $product->getName() ?>" style="width:300px;"/>
+                  </td>
+              </tr>
+              <?php endif; ?>
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Name') ?></label></td>
+                  <td class="value"><strong><?php echo $product->getName() ?></strong></td>
+              </tr>
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Description') ?></label></td>
+                  <td class="value"><strong><?php echo $product->getDescription() ?></strong></td>
+              </tr>
+              <?php if ($product->getGender()) : ?>
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Gender') ?></label></td>
+                  <td class="value"><strong><?php echo $product->getGender() ?></strong></td>
+              </tr>
+              <?php endif; ?>
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Status') ?></label></td>
+                  <td class="value"><strong><?php echo $product->getStatus() ?></strong></td>
+              </tr>
+          </table>
+      </div>
+   </div>
+
+   <div class="entry-edit">
+      <div class="entry-edit-head">
+         <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('izberg')->__('Merchant & Brand') ?></h4>
+      </div>
+      <div class="fieldset fieldset-wide">
+          <table class="form-list">
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Merchant') ?></label></td>
+                  <td class="value"><strong><?php echo $product->getMerchant()->getName() ?></strong></td>
+              </tr>
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Brand') ?></label></td>
+                  <td class="value"><strong><?php echo $product->getBrand() ?></strong></td>
+              </tr>
+
+          </table>
+      </div>
+   </div>
+
+   <div class="entry-edit">
+      <div class="entry-edit-head">
+         <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('izberg')->__('Inventory & Price') ?></h4>
+      </div>
+      <div class="fieldset fieldset-wide">
+          <table class="form-list">
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Price') ?></label></td>
+                  <td class="value"><strong><?php echo $product->getPriceWithVat() ?></strong></td>
+              </tr>
+
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('In Stock') ?></label></td>
+                  <td class="value"><strong><?php echo $product->getInStock() ? Mage::helper('izberg')->__('Yes') : Mage::helper('izberg')->__('No') ?></strong></td>
+              </tr>
+              <tr>
+                  <td class="label"><label><?php echo Mage::helper('izberg')->__('Stock') ?></label></td>
+                  <td class="value"><strong><?php echo $product->getStock() ?></strong></td>
+              </tr>
+          </table>
+      </div>
+   </div>
+
+   <?php $products =  $this->getIzbergProducts()?>
+   <?php if (count($products) > 0) :?>
+   <div class="entry-edit">
+      <div class="entry-edit-head">
+         <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('izberg')->__('Magento created products') ?> :</h4>
+      </div>
+      <div class="fieldset fieldset-wide">
+          <table class="form-list">
+              <?php foreach($products as $product) : ?>
+              <tr>
+                  <td class="label"><label>#<?php echo $product->getId() ?></label></td>
+                  <td class="value">
+                    <strong>
+                      <a href="<?php echo Mage::helper("adminhtml")->getUrl("adminhtml/catalog_product/edit/", array( "id" => $product->getId()))?>">
+                        <?php echo $product->getName() ?>
+                      </a>
+                    </strong>
+                  </td>
+              </tr>
+            <?php endforeach; ?>
+          </table>
+      </div>
+   </div>
+   <?php endif; ?>
+
+</div>

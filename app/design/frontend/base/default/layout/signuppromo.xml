@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Cybage Signup Promotion Plugin 
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * It is available on the World Wide Web at:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you are unable to access it on the World Wide Web, please send an email
+ * To: Support_Magento@cybage.com.  We will  send you a copy of the source file.
+ *
+ * @category   Signup Promotion Plugin
+ * @package    Cybage_SignupPromo
+ * @copyright  Copyright (c) 2014 Cybage Software Pvt. Ltd., India
+ *             http://www.cybage.com/pages/centers-of-excellence/ecommerce/ecommerce.aspx
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author     Cybage Software Pvt. Ltd. <Support_Magento@cybage.com>
+ */
+-->
+<layout version="0.1.0">
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="customer"><name>customer_coupon</name><path>signuppromo/customer/coupon/</path><label>My Coupon</label></action>
+        </reference>
+    </customer_account>
+    <customer_account_index translate="label">
+        <reference name="customer_account_dashboard">
+            <block type="signuppromo/coupon" name="customer.account.dashboard.extra" as="customer.account.dashboard.extra" template="signuppromo/dashboardcouponinfo.phtml"/>
+        </reference>
+    </customer_account_index>
+    <signuppromo_customer_coupon translate="label">
+       <label>My Coupons</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="signuppromo/coupon" name="signuppromo_coupon" template="signuppromo/coupon.phtml"/>
+        </reference>
+    </signuppromo_customer_coupon>
+</layout>

@@ -1,0 +1,22 @@
+<?php
+  $products_per_merchants = $this->getProductsPerMerchants();
+?>
+
+<?php if ($this->getMerchants()->count() > 0) : ?>
+<table style="border-color:#666;border-spacing:0px;margin-top: 20px">
+    <thead>
+      <tr>
+        <th>Merchant</th>
+        <th>Products count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($this->getMerchants() as $_merchant): ?>
+        <tr>
+          <td><?php echo $_merchant->getName() ?></td>
+          <td><?php echo $products_per_merchants[$_merchant->getId()] ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>

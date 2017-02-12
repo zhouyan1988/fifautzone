@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+<modules>
+<Ly_Seller>
+<version>1.0</version>
+</Ly_Seller>
+</modules>
+<global>
+<models>
+<seller>
+<class>Ly_Seller_Model</class>
+</seller>
+</models>
+<helpers>
+<seller>
+<class>Ly_Seller_Helper</class>
+</seller>
+</helpers>
+</global>
+<frontend>
+<routers>
+            <seller>
+                <use>standard</use>
+                <args>
+                    <module>Ly_Seller</module>
+                    <frontName>seller</frontName>
+                </args>
+            </seller>
+</routers>
+</frontend>
+</config>

@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <izberg module="izberg">
+            <title>IZBERG</title>
+            <sort_order>40</sort_order>
+            <children>
+                <help module="izberg">
+                    <title>Help</title>
+                    <sort_order>0</sort_order>
+                    <children>
+                        <help_tutorial translate="title">
+                            <title>Documentation</title>
+                            <sort_order>2</sort_order>
+                            <action>izberg/adminhtml_help/tutorial</action>
+                        </help_tutorial>
+                        <help_about translate="title">
+                            <title>About</title>
+                            <sort_order>3</sort_order>
+                            <action>izberg/adminhtml_help/about</action>
+                        </help_about>
+                        <help_create_webhook translate="title">
+                            <title>Create webhooks</title>
+                            <sort_order>4</sort_order>
+                            <action>izberg/adminhtml_help/createWebhooks</action>
+                        </help_create_webhook>
+                    </children>
+                </help>
+                <merchants module="izberg">
+                    <title>Merchants</title>
+                    <sort_order>1</sort_order>
+                    <action>izberg/adminhtml_merchant</action>
+                </merchants>
+                <products translate="title">
+                    <title>Products</title>
+                    <sort_order>2</sort_order>
+                    <action>izberg/adminhtml_product</action>
+                </products>
+                <orders translate="title">
+                    <title>Orders</title>
+                    <sort_order>3</sort_order>
+                    <action>izberg/adminhtml_order</action>
+                </orders>
+                <matching>
+                    <title>Matchings</title>
+                    <sort_order>4</sort_order>
+                    <children>
+                        <matching_attributes translate="title">
+                            <title>Matching product attributes</title>
+                            <sort_order>1</sort_order>
+                            <action>izberg/adminhtml_matching/attributes</action>
+                        </matching_attributes>
+                        <matching_categories translate="title">
+                            <title>Matching izberg categories</title>
+                            <sort_order>2</sort_order>
+                            <action>izberg/adminhtml_matching/categories</action>
+                        </matching_categories>
+                        <matching_api_webhooks translate="title">
+                            <title>Match webhooks</title>
+                            <sort_order>3</sort_order>
+                            <action>izberg/adminhtml_api/webhooks</action>
+                        </matching_api_webhooks>
+                    </children>
+                </matching>
+                <jobs translate="title">
+                    <title>Jobs in queue</title>
+                    <sort_order>5</sort_order>
+                    <action>izberg/adminhtml_job</action>
+                </jobs>
+                <logs>
+                    <title>Logs</title>
+                    <sort_order>6</sort_order>
+                    <children>
+                      <api_logs translate="title">
+                          <title>Api</title>
+                          <sort_order>1</sort_order>
+                          <action>izberg/adminhtml_api/logs</action>
+                      </api_logs>
+                      <magmi_logs translate="title">
+                          <title>Magmi</title>
+                          <sort_order>2</sort_order>
+                          <action>izberg/adminhtml_api/magmilogs</action>
+                      </magmi_logs>
+                    </children>
+                </logs>
+                <debug>
+                    <title>Debug</title>
+                    <sort_order>7</sort_order>
+                    <children>
+                      <run_magmi translate="title">
+                          <title>Run magmi</title>
+                          <sort_order>1</sort_order>
+                          <action>izberg/adminhtml_help/magmi</action>
+                      </run_magmi>
+                    </children>
+                </debug>
+                <configuration module="izberg">
+      						<title>Settings</title>
+      						<sort_order>8</sort_order>
+      						<action>adminhtml/system_config/edit/section/izberg/</action>
+                  <sort_order>400</sort_order>
+      					</configuration>
+            </children>
+        </izberg>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <izberg translate="title" module="izberg">
+                        <title>Izberg</title>
+                        <sort_order>40</sort_order>
+                        <children>
+                            <help translate="title">
+                                <title>Help</title>
+                                <sort_order>0</sort_order>
+                            </help>
+                            <merchants translate="title">
+                                <title>Manage Merchants</title>
+                                <sort_order>0</sort_order>
+                            </merchants>
+                            <products translate="title">
+                                <title>Manage Products</title>
+                                <sort_order>1</sort_order>
+                            </products>
+                            <matching>
+                                <title>Matchings</title>
+                                <sort_order>1</sort_order>
+                                <children>
+                                    <matching_categories translate="title">
+                                        <title>Matching izberg categories</title>
+                                        <sort_order>2</sort_order>
+                                    </matching_categories>
+                                    <matching_api_webhooks translate="title">
+                                        <title>Match webhooks</title>
+                                        <sort_order>3</sort_order>
+                                    </matching_api_webhooks>
+                                </children>
+                            </matching>
+                            <jobs translate="title">
+                                <title>Izberg jobs</title>
+                                <sort_order>2</sort_order>
+                            </jobs>
+                            <logs>
+                                <title>Logs</title>
+                                <sort_order>3</sort_order>
+                                <children>
+                                  <api_logs translate="title">
+                                      <title>Api</title>
+                                      <sort_order>1</sort_order>
+                                  </api_logs>
+                                  <magmi_logs translate="title">
+                                      <title>Magmi</title>
+                                      <sort_order>2</sort_order>
+                                  </magmi_logs>
+                                </children>
+                            </logs>
+                            <debug>
+                                <title>Debug</title>
+                                <sort_order>7</sort_order>
+                                <children>
+                                  <run_magmi translate="title">
+                                      <title>Run magmi</title>
+                                      <sort_order>1</sort_order>
+                                  </run_magmi>
+                                </children>
+                            </debug>
+                            <configuration module="izberg">
+                  						<title>Settings</title>
+                  						<sort_order>4</sort_order>
+                  					</configuration>
+                        </children>
+                    </izberg>
+                    <system>
+                      <children>
+                          <config>
+                              <children>
+                                  <izberg translate="title" module="izberg">
+                                      <title>Izberg</title>
+                                      <sort_order>50</sort_order>
+                                  </izberg>
+                              </children>
+                          </config>
+                      </children>
+                  </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

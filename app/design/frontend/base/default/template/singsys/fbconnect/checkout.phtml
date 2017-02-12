@@ -1,0 +1,21 @@
+<?php 
+/**
+ * @category    Development
+ * @package     Singsys_Fbconnect
+ * @version     1.0.0
+ * @copyright   Copyright (c) 2015 SingsysShop (https://www.singsys.com)
+ * @author	Singsys
+ */
+?>
+
+<div class="singsys-fbconnect-checkout">
+    <div class="<?php echo $this->_getColSet(); ?>">
+        <?php if($this->_facebookEnabled()): ?>
+        <div class="<?php echo $this->_getCol(); ?> singsys-fbconnect-checkout-facebook">
+            <h3><?php echo $this->__('Facebook Connect') ?></h3>
+            <p><?php echo $this->__('You can continue with checkout using your <strong>Facebook</strong> account.') ?></p>
+            <?php echo $this->getChildHtml('singsys_fbconnect_checkout_facebook_button')?>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>

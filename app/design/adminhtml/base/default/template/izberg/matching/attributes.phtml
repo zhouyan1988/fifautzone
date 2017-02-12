@@ -1,0 +1,98 @@
+<?php
+   /**
+    * Magento
+    *
+    * NOTICE OF LICENSE
+    *
+    * This source file is subject to the Academic Free License (AFL 3.0)
+    * that is bundled with this package in the file LICENSE_AFL.txt.
+    * It is also available through the world-wide-web at this URL:
+    * http://opensource.org/licenses/afl-3.0.php
+    * If you did not receive a copy of the license and are unable to
+    * obtain it through the world-wide-web, please send an email
+    * to license@magentocommerce.com so we can send you a copy immediately.
+    *
+    * DISCLAIMER
+    *
+    * Do not edit or add to this file if you wish to upgrade Magento to newer
+    * versions in the future. If you wish to customize Magento for your
+    * needs please refer to http://www.magentocommerce.com for more information.
+    *
+    * @category    design
+    * @package     default_default
+    * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+    * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+    */
+   ?>
+<?php
+ /**
+  * Template for block Mage_Adminhtml_Block_Customer_Edit_Tab_View
+  */
+ $coreHelper = Mage::helper('core');
+ $attributes = $this->getAttributeList();
+ $magento_attributes = $this->getAttributeList();
+ $izberg_attributes = $this->getIzbergAttributes();
+ $current_value = $this->getExistingMatching();
+ ?>
+
+<div class="main-col-inner">
+  <div class="content-header">
+     <h3 class="icon-head head-products"><?php echo Mage::helper('izberg')->__('Attributes matching') ?></h3>
+     <div class="content-buttons-placeholder">
+        <p class="content-buttons form-buttons">
+          <button title="Save matching" type="button" class="scalable save" style="" onclick="attributeForm.submit();">
+            <span>
+              <span>
+                <span><?php echo $this->__("Save matching") ?></span>
+              </span>
+            </span>
+          </button>
+        </p>
+     </div>
+  </div>
+   <div class="box">
+     !!!
+     <?php echo $this->__("Only attributes from the 'attribute set' selected in options (System->Configuration->Izberg->Settings) will appear")?>
+     !!!
+   </div>
+   <div class="entry-edit">
+      <div class="entry-edit-head">
+         <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('izberg')->__('General') ?></h4>
+      </div>
+      <div id="matching_categories" class="fieldset fieldset-wide">
+          <h3><?php echo $this->__("Link izberg attributes to your magento attributes:") ?></h3>
+          <div>
+            <form id="attribute_form" name="attribute_form" method="POST" action="<?php echo $this->getPostUrl() ?>">
+              <?php echo $this->getBlockHtml('formkey'); ?>
+              <table style="width:100%">
+                <?php $i = 0; ?>
+                <?php foreach ($izberg_attributes as $key => $name) :?>
+                <?php $i++; ?>
+                <tr>
+                  <td>
+                    <input type="hidden" value="<?php echo $key ?>" name="attribute[<?php echo $i ?>][key]" />
+                    <?php echo $name ?>
+                  </td>
+                  <td>
+                    <select name="attribute[<?php echo $i ?>][value]">
+                      <option value="">-----</option>
+                      <?php foreach ($magento_attributes as $mattr) :?>
+                        <?php if (!$mattr->getId()) { continue; } ?>
+                        <option value="<?php echo $mattr->getId() ?>" <?php echo (isset($current_value[$key]) && (int) $current_value[$key] == $mattr->getId()) ? "selected='selected'" : "" ?> >
+                          <?php echo $mattr->getAttributeCode() ?>
+                        </option>
+                      <?php endforeach; ?>
+                    </select>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+              </table>
+            </form>
+          </div>
+      </div>
+   </div>
+</div>
+
+<script type="text/javascript">
+    var attributeForm = new varienForm('attribute_form');
+</script>

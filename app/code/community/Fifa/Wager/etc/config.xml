@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+<modules>
+<Fifa_Wager>
+<version>1.0</version>
+</Fifa_Wager>
+</modules>
+<global>
+<models>
+<wager>
+<class>Fifa_Wager_Model</class>
+</wager>
+</models>
+<helpers>
+<wager>
+<class>Fifa_Wager_Helper</class>
+</wager>
+</helpers>
+</global>
+<frontend>
+<routers>
+            <wager>
+                <use>standard</use>
+                <args>
+                    <module>Fifa_Wager</module>
+                    <frontName>wager</frontName>
+                </args>
+            </wager>
+</routers>
+</frontend>
+</config>
