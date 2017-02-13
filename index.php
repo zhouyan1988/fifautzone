@@ -1,6 +1,6 @@
 <?php
- 
-/**
+ //echo "aaa";
+/*
  * Magento
  *
  * NOTICE OF LICENSE
