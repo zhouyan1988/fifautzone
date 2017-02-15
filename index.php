@@ -1,5 +1,6 @@
 <?php
- //echo "aaa";
+
+phpinfo();die();
 /*
  * Magento
  *
